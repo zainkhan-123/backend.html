@@ -455,20 +455,32 @@ footer {
 @media screen and (max-width:480px) {
   nav{
     padding: 20px;
+    padding-bottom: 0;
   }
 
   .search{
-    display: none;
-  }
+    /* display: none; */
+    width: 75px;
+    height: 10px;
+    justify-content: center;
+}
+.searchInput{
+  width: -webkit-fill-available;
+  margin-right: 8px;
+}
+
+
 
   .navBottom{
     flex-wrap: wrap;
+    margin-top: 17px;
   }
 
   .menuItem{
     margin: 20px;
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: 1000;
+    font-size: 15px;
+    color: rgb(59, 146, 146)
   }
 
   .slider{
@@ -490,14 +502,18 @@ footer {
 
   .sliderPrice{
     top: unset;
-    bottom: -50;
+    bottom: -0;
     left: 0;
-    background-color: lightgrey;
+    background-color: rgb(82, 31, 31);
+    font-size: 40px;
   }
 
   .buyButton{
     right: 0;
     top: 0;
+    /* width: 50px; */
+    font-size: 20px;
+    margin-top: 20px;
   }
 
   .features{
@@ -527,12 +543,14 @@ footer {
   }
 
   .productTitle{
-    font-size: 50px;
+    font-size: 40px;
     margin: 0;
   }
 
   .gallery{
-    display: none;
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
   }
 
   .newSeason{
@@ -546,6 +564,8 @@ footer {
   footer{
     flex-direction: column;
     align-items: center;
+    height: 70vh;
+    /* background-image: linear-gradient(to top, #2b2736 0%, #3b3038 50%); */
   }
 
   .footerLeft{
@@ -557,12 +577,63 @@ footer {
     padding: 20px;
     width: 90%;
     align-items: center;
-    background-color: whitesmoke;
+    background-image: linear-gradient(to top, #2b2736 0%, #3b3038 50%);
   }
 
   .payment{
     width: 90%;
     padding: 20px;
     background-color: teal;
+  }
+  .nsTitleSm{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: chocolate;
+  }
+  .nsTitle{
+    font-size: 20px;
+   
+  }
+  .nsTitle:nth-child(2){
+    font-family:italic;
+  }
+
+
+  .nsTitle:nth-child(3){
+    color: darkorchid;
+    font-style: italic;
+  }
+  .nsButton{
+    width: 50vw;
+    height: 15vw;
+    background-color: rgb(124, 115, 80);
+  }
+  .productButton{
+    background-color: rgb(124, 115, 80);
+    border-bottom: none;
+    border-right: none;
+
+  }
+  .galleryTitle{
+    color: slategray;
+    text-align: -webkit-center;
+    font-size: 23px;
+    font-family: emoji;
+  }
+  #imagesneaker{
+    width: 70px;
+    height: 20px;
+  }
+  .limitedOffer{
+    font-size: 15px;
+  }
+  .productDetails{
+    margin-top: -70px;
+        font-size: 17px;
+  }
+  .productTitle{
+    font-size: 30px;
+    margin-bottom: 0%;
+    color: rgb(40, 219, 61);
   }
 }

@@ -1,186 +1,173 @@
-const wrapper = document.querySelector(".sliderwrapper");
-const menuitems = document.querySelectorAll(".menuitem");
+const wrapper = document.querySelector(".sliderWrapper");
+const menuItems = document.querySelectorAll(".menuItem");
 const shoesnameinput = document.querySelector("#shoesnameinput");
 const searchicon = document.querySelector("#searchIcons");
 
-
-const product = [
-  // product array remian the same
+const products = [
   {
-  id: 1,
-  title:"AIR FORCE",
-  price:119,
-  colors:[
-  {
-  code:"black",
-  img:"./images/air.png",
-  },
-  {
-  code:"blue",
-  img:"./images/air2.png",
-  },
-  ],
-  },
-  {
-  id:2,
-  title:"JORDEN",
-  price:149,
-  colors:[
-  {
-  code:"darkblue",
-  img:"./images/jorden.png",
-  },
-  {
-    code:"lightgrey",
-   img:"./images/jorden2.png"
-  },
-  ]
-  },
-  {
-  id:3,
-  title:"BLAZER",
-  price:109,
-  colors:[
-    {
-      code:"red",
-      img:"./images/blazer.png",
-    },
-    {
-      code:"blue",
-      img:"./images/blazer2.png",
-    },
-  ]
-  
-  },
-  
-  
-  {
-    id:4,
-    title:"CRATER",
-    price:129,
-    colors:[
+    id: 1,
+    title: "Air Force",
+    price: 119,
+    colors: [
       {
-        code:"yellow",
-        img:"./images/item.png",
+        code: "black",
+        img: "./img/air.png",
       },
       {
-        code:"slategrey",
-        img:"./images/item2.png",
+        code: "darkblue",
+        img: "./img/air2.png",
       },
-    ]
-    
-    },
-  
-    {
-      id:5,
-      title:"HIPPIE",
-      price:129,
-      colors:[
-        {
-          code:"black",
-          img:"./images/fifth.png",
-        },
-        {
-          code:"goldenrod",
-          img:"./images/fifth2.png",
-        },
-      ]
-      
+    ],
+  },
+  {
+    id: 2,
+    title: "Jordan",
+    price: 149,
+    colors: [
+      {
+        code: "lightgray",
+        img: "./img/jordan.png",
       },
-  ]
+      {
+        code: "green",
+        img: "./img/jordan2.png",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Blazer",
+    price: 109,
+    colors: [
+      {
+        code: "lightgray",
+        img: "./img/blazer.png",
+      },
+      {
+        code: "green",
+        img: "./img/blazer2.png",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Crater",
+    price: 129,
+    colors: [
+      {
+        code: "black",
+        img: "./img/crater.png",
+      },
+      {
+        code: "lightgray",
+        img: "./img/crater2.png",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Hippie",
+    price: 99,
+    colors: [
+      {
+        code: "gray",
+        img: "./img/hippie.png",
+      },
+      {
+        code: "black",
+        img: "./img/hippie2.png",
+      },
+    ],
+  },
+];
 
-let choosenproduct = product[0];
+let choosenProduct = products[0];
 
-const currentproductimage = document.querySelector(".productimage");
-const currentproducttitle = document.querySelector(".producttitle");
-const currentporductprice = document.querySelector(".productprice");
-const currentporductcolor = document.querySelectorAll(".color");
-const currentporductsize = document.querySelectorAll(".size");
+const currentProductImg = document.querySelector(".productImg");
+const currentProductTitle = document.querySelector(".productTitle");
+const currentProductPrice = document.querySelector(".productPrice");
+const currentProductColors = document.querySelectorAll(".color");
+const currentProductSizes = document.querySelectorAll(".size");
 
-menuitems.forEach((item, index) => {
-    item.addEventListener("click", () => {
-        // Change the current slide
-        wrapper.style.transform = `translateX(${-100 * index}vw)`;
+menuItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    //change the current slide
+    wrapper.style.transform = `translateX(${-100 * index}vw)`;
 
-        // Change the chosen product
-        choosenproduct = product[index];
+    //change the choosen product
+    choosenProduct = products[index];
 
-        // Update the text of the current product
-        currentproducttitle.textContent = choosenproduct.title;
-        currentporductprice.textContent = "$" + choosenproduct.price;
-        // By default, pick the image of the first color
-        currentproductimage.src = choosenproduct.colors[0].img;
+    //change texts of currentProduct
+    currentProductTitle.textContent = choosenProduct.title;
+    currentProductPrice.textContent = "$" + choosenProduct.price;
+    currentProductImg.src = choosenProduct.colors[0].img;
 
-        // Assign new background colors
-        currentporductcolor.forEach((color, colorIndex) => {
-            if (choosenproduct.colors[colorIndex]) {
-                color.style.backgroundColor = choosenproduct.colors[colorIndex].code;
-                color.style.display = "block"; // Make sure color options are visible
-            } else {
-                color.style.display = "none"; // Hide color options that don't exist
-            }
-        });
+    //assing new colors
+    currentProductColors.forEach((color, index) => {
+      color.style.backgroundColor = choosenProduct.colors[index].code;
     });
+  });
 });
 
-// On click, choose the current product image
-currentporductcolor.forEach((color, index) => {
-    color.addEventListener("click", () => {
-        currentproductimage.src = choosenproduct.colors[index].img;
-    });
+currentProductColors.forEach((color, index) => {
+  color.addEventListener("click", () => {
+    currentProductImg.src = choosenProduct.colors[index].img;
+  });
 });
 
-// Handle size selection
-currentporductsize.forEach((size) => {
-    size.addEventListener("click", () => {
-        // Reset all sizes to default
-        currentporductsize.forEach((size) => {
-            size.style.backgroundColor = "white";
-            size.style.color = "black";
-        });
-        // Change color of selected size
-        size.style.backgroundColor = "black";
-        size.style.color = "white";
+currentProductSizes.forEach((size, index) => {
+  size.addEventListener("click", () => {
+    currentProductSizes.forEach((size) => {
+      size.style.backgroundColor = "white";
+      size.style.color = "black";
     });
+    size.style.backgroundColor = "black";
+    size.style.color = "white";
+  });
 });
 
-const productbutton = document.querySelector(".productbutton");
+const productButton = document.querySelector(".productButton");
 const payment = document.querySelector(".payment");
 const close = document.querySelector(".close");
 
-productbutton.addEventListener("click", () => {
-    payment.style.display = "flex";
+productButton.addEventListener("click", () => {
+  payment.style.display = "flex";
 });
+
 close.addEventListener("click", () => {
-    payment.style.display = "none";
+  payment.style.display = "none";
 });
 
-// Handle search functionality
+// search input functionality 
 searchicon.addEventListener("click", () => {
-    const shoesname = shoesnameinput.value.toUpperCase();
-    const foundproduct = product.find(p => p.title.toUpperCase() === shoesname);
+  const shoesname = shoesnameinput.value.toUpperCase();
+  const foundproduct = products.find(p => p.title.toUpperCase() === shoesname);
 
-    if (foundproduct) {
-        choosenproduct = foundproduct;
+  if (foundproduct) {
+      choosenProduct = foundproduct;
 
-        // Find the index of the found product to move the slider
-        const foundIndex = product.indexOf(choosenproduct);
-        wrapper.style.transform = `translateX(${-100 * foundIndex}vw)`;
+      // Find the index of the found product to move the slider
+      const foundIndex = products.indexOf(choosenProduct);
+      wrapper.style.transform = `translateX(${-100 * foundIndex}vw)`;
 
-        currentproducttitle.textContent = choosenproduct.title;
-        currentporductprice.textContent = "$" + choosenproduct.price;
-        currentproductimage.src = choosenproduct.colors[0].img;
+// After search the item  input feild empty  
+      shoesnameinput.value = "" ;
 
-        // Update the color options
-        currentporductcolor.forEach((color, index) => {
-            if (choosenproduct.colors[index]) {
-                color.style.backgroundColor = choosenproduct.colors[index].code;
-                color.style.display = "block";
-            } else {
-                color.style.display = "none";
-            }
-        });
-    } else {
-        alert("No product found with the name: " + shoesnameinput.value);
-    }
+// then for  text changing 
+      currentProductTitle.textContent = choosenProduct.title;
+      currentProductPrice.textContent = "$" + choosenProduct.price;
+      currentProductImg.src = choosenProduct.colors[0].img;
+
+      // Update the color options
+      currentProductColors.forEach((color, index) => {
+          if (choosenProduct.colors[index]) {
+              color.style.backgroundColor = choosenProduct.colors[index].code;
+              color.style.display = "block";
+          } else {
+              color.style.display = "none";
+          }
+      });
+  } else {
+      alert("No product found with the name: " + shoesnameinput.value);
+  }
 });
